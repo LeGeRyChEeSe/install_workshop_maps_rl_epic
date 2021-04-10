@@ -1,0 +1,1 @@
+# Script made for installing up to 6 workshop maps into your Rocket League folder (Epic Games version)
