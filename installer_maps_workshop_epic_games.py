@@ -1,6 +1,8 @@
 import json
 import os
 import shutil
+import colorama
+from colorama import Fore, Style
 
 
 def is_exists(path):
@@ -25,8 +27,8 @@ def get_files_list(dir):
 def read(file: str = "maps.json"):
     if not is_exists(file):
         maps = {
-            "langages": ["fr_FR", "en_US"],
-            "langage": "en_US",
+            "backup": False,
+            "language": "en_US",
             "rl_path": None,
             "original_maps": {
                 "Labs_CirclePillars_P.upk": None,
@@ -41,13 +43,27 @@ def read(file: str = "maps.json"):
         }
         write(maps)
 
-    with open(file, "r") as maps:
+    with open(file, "r", encoding="utf-8") as maps:
         return json.load(maps)
 
 
 def write(content, mode: str = "w", file: str = "maps.json"):
-    with open(file, mode) as maps:
+    with open(file, mode, encoding="utf-8") as maps:
         json.dump(content, maps, indent=4)
+
+
+def set_language(maps: dict, language: str):
+    new_language = ""
+    while new_language not in languages.keys():
+        new_language = input(
+            "\n".join(languages.keys()) + "\n" + languages[language]["set_language"])
+        os.system("cls")
+
+    language = maps["language"] = new_language
+    write(maps)
+    print(Fore.RED + languages[language]["language_set"] + Style.RESET_ALL)
+    os.system("pause")
+    main()
 
 
 def make_dirs():
@@ -65,7 +81,7 @@ def get_map():
     if maps_file:
         while not maps_file["rl_path"] or not is_exists(maps_file["rl_path"]):
             maps_file["rl_path"] = os.path.join(input(
-                "Veuillez indiquer le chemin vers le dossier d'installation de Rocket League.\nPar exemple le chemin par défaut (si vous l'avez installé depuis Epic Games) est: 'C:\Program Files\Epic Games\\rocketleague'\n\nChemin = "), "TAGame\CookedPCConsole")
+                languages[maps_file["language"]]["get_map"]), "TAGame\CookedPCConsole")
             os.system("cls")
     write(maps_file)
     make_dirs()
@@ -76,7 +92,8 @@ def backup_original_maps(maps: dict):
     rl_path: str = maps["rl_path"]
     original_maps: dict = maps["original_maps"]
 
-    print("Backup des fichiers originaux dans le dossier 'original_maps' en cours...")
+    print(Fore.BLUE + languages[maps["language"]]
+          ["backup_original_maps1"] + Style.RESET_ALL)
 
     for file_name in original_maps.keys():
 
@@ -85,34 +102,53 @@ def backup_original_maps(maps: dict):
         if is_exists(path_to_file):
             new_path = shutil.copy(path_to_file, "original_maps")
             original_maps[file_name] = new_path
+
+    for _, values in languages.items():
+        try:
+            os.remove(
+                f"original_maps\# ↓↓ {values['backup_original_maps2']} ! ↓↓")
+        except:
+            pass
+
+    print(Fore.GREEN + languages[maps['language']]
+          ['backup_original_maps2'] + Style.RESET_ALL)
+
     try:
-        with open("original_maps\# ↓↓ NE PAS EFFACER CES FICHIERS ! ↓↓", "x"):
+        with open(f"original_maps\# ↓↓ {languages[maps['language']]['backup_original_maps2']} ! ↓↓", "x"):
             pass
     except:
         pass
 
+    maps["backup"] = True
+
     write(maps)
-    print("Backup des fichiers originaux réussie!")
+    print(languages[maps["language"]]["backup_original_maps3"])
 
 
 def restore_original_maps(maps: dict):
     rl_path: str = maps["rl_path"]
     original_maps: dict = maps["original_maps"]
 
-    print("Restauration des maps originales en cours...")
+    print(Fore.BLUE + languages[maps["language"]]
+          ["restore_original_maps1"] + Style.RESET_ALL)
 
     for name, file in original_maps.items():
         old_file = os.path.join(rl_path, name)
-        os.remove(old_file)
+        try:
+            os.remove(old_file)
+        except:
+            pass
         shutil.copy(file, rl_path)
 
-    print("Restauration des maps originales terminée!")
+    print(Fore.GREEN + languages[maps["language"]]
+          ["restore_original_maps2"] + Style.RESET_ALL)
 
 
 def load_work_maps(maps: dict):
     while count_files("work_maps") == 0 or count_files("work_maps") > 6:
-        print("\nMerci de placer vos 6 maps workshop (6 maximum ou moins) dans le dossier 'work_maps' qui vient d'être créé (si vous lancez ce programme pour la première fois)\n\nAppuyez sur une touche pour lancer la copie des maps Workshops...")
-        os.system("pause >nul")
+        print(Fore.BLUE + languages[maps["language"]]
+              ["load_work_maps"] + Style.RESET_ALL)
+        input()
         os.system("cls")
 
     maps["work_maps"] = get_files_list("work_maps")
@@ -128,8 +164,8 @@ def make_modified_maps(maps: dict):
     temp_map = list(original_maps.keys())
     i = 0
 
-    print(
-        f"Copie des maps Workshops vers le dossier '{maps['rl_path']}', veuillez patienter un moment...")
+    print(Fore.BLUE + languages[maps["language"]]["make_modified_maps1"].replace(
+        "{maps['rl_path']}", maps['rl_path']) + Style.RESET_ALL)
 
     for name, file in work_maps.items():
         new_path = shutil.copy(file, "modified_maps")
@@ -146,26 +182,40 @@ def make_modified_maps(maps: dict):
 
     write(maps)
 
-    print("Opération terminée! Les maps Workshop ont bien été intégrées à Rocket League! Relancez le jeu pour en profiter ! :)\n\nPour remettre les maps par défaut relancez le programme et entrez '2'")
+    print(Fore.GREEN + languages[maps["language"]]
+          ["make_modified_maps2"] + Style.RESET_ALL)
+
+
+languages: dict = read("languages.json")
 
 
 def main():
+    os.system("cls")
     maps = get_map()
+    language = maps["language"]
+
     user_choice = ""
 
-    while user_choice != "1" and user_choice != "2":
-        user_choice = input(
-            "1: Installer des maps Workshop\n2: Désinstaller les maps Workshop et remettre les maps originales\n\nVeuillez entre un numéro (1 ou 2): ")
+    while user_choice not in ["0", "1", "2", "3"]:
+        user_choice = input(languages[maps["language"]]["main"])
 
     os.system("cls")
 
     if user_choice == "1":
-        backup_original_maps(maps)
+        if not maps["backup"]:
+            backup_original_maps(maps)
         load_work_maps(maps)
         make_modified_maps(maps)
 
     elif user_choice == "2":
         restore_original_maps(maps)
+
+    elif user_choice == "3":
+        set_language(maps, language)
+        return
+
+    elif user_choice == "0":
+        exit()
 
 
 main()

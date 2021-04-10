@@ -1,0 +1,31 @@
+{
+  "fr_FR": {
+    "set_language": "Veuillez sélectionner votre langue : ",
+    "language_set": "Langue modifiée sur Français (fr_FR)",
+    "get_map": "Veuillez indiquer le chemin vers le dossier d'installation de Rocket League.\nPar exemple le chemin par défaut (si vous l'avez installé depuis Epic Games) est: 'C:\\Program Files\\Epic Games\\rocketleague'\n\nChemin = ",
+    "backup_original_maps1": "Backup des fichiers originaux dans le dossier 'original_maps' en cours...",
+    "backup_original_maps2": "NE PAS EFFACER CES FICHIERS",
+    "backup_original_maps3": "Backup des fichiers originaux réussie!",
+    "restore_original_maps1": "Restauration des maps originales en cours...",
+    "restore_original_maps2": "Restauration des maps originales terminée!",
+    "load_work_maps": "\nMerci de placer vos 6 maps workshop (6 maximum ou moins) dans le dossier 'work_maps' qui vient d'être créé (si vous lancez ce programme pour la première fois)\n\nLes maps workshop sont au format .udk\n\nAppuyez sur entrer pour lancer la copie des maps Workshops...",
+    "make_modified_maps1": "Copie des maps Workshops vers le dossier '{maps['rl_path']}', veuillez patienter un moment...",
+    "make_modified_maps2": "\nOpération terminée! Les maps Workshop ont bien été intégrées à Rocket League! Relancez le jeu pour en profiter ! :)\n\nPour remettre les maps par défaut relancez le programme et entrez '2'",
+    "main": "1: Installer des maps Workshop\n2: Désinstaller les maps Workshop et remettre les maps originales\n3: Changer la langue\n0: Quitter\n\nVeuillez entre un numéro (1, 2, 3 ou 0): "
+
+  },
+  "en_US": {
+    "set_language": "Please select your language : ",
+    "language_set": "Language modified to English (en_US)",
+    "get_map": "Please indicate the file path of your Rocket League installation.\nDefault path (if installed with Epic Games) is: 'C:\\Program Files\\Epic Games\\rocketleague'\n\nPath = ",
+    "backup_original_maps1": "Backup of the original files to the 'original_maps' directory in progress...",
+    "backup_original_maps2": "DO NOT DELETE THOSE FILES",
+    "backup_original_maps3": "Backup of the files successful!",
+    "restore_original_maps1": "Restoration of the original maps in progress...",
+    "restore_original_maps2": "The restoration of the original maps has finished!",
+    "load_work_maps": "\nPlease place your 6 maps from the workshop (6 maximum or less) in the directory 'work_maps' which has just been created (if you're lauching this program for the first time)\n\nWorkshop maps are in .udk format\n\nPress enter to launch the copy of the Workshop maps...",
+    "make_modified_maps1": "Copy of the maps to the directory '{maps['rl_path']}', wait a moment please...",
+    "make_modified_maps2": "\nOperation finished! The workshop maps have succesfully been integrated to Rocket League! Restart your game to enable them ! :)\n\nTo put back the original maps restart the program and press '2'",
+    "main": "1: Install Workshop maps\n2: Uninstall Workshop maps and put back the original maps\n3: Change the language\n0: Exit\n\nPlease enter a number (1, 2, 3 or 0): "
+  }
+}
