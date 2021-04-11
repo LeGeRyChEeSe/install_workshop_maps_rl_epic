@@ -10,6 +10,4 @@ Include
 pyvenv.cfg
 .git
 __pycache__
-build
 installer_maps_workshop_epic_games.spec
-setup.py

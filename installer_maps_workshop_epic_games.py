@@ -61,8 +61,9 @@ def set_language(maps: dict, language: str):
 
     language = maps["language"] = new_language
     write(maps)
-    print(Fore.RED + languages[language]["language_set"] + Style.RESET_ALL)
-    os.system("pause")
+    print(Fore.RED + languages[language]["language_set1"] + Style.RESET_ALL)
+    print(languages[language]["language_set2"])
+    os.system("pause >nul")
     main()
 
 

@@ -1,7 +1,8 @@
 {
   "fr_FR": {
     "set_language": "Veuillez sélectionner votre langue : ",
-    "language_set": "Langue modifiée sur Français (fr_FR)",
+    "language_set1": "Langue modifiée sur Français (fr_FR)",
+    "language_set2": "Veuillez presser une touche pour revenir au menu principal...",
     "get_map": "Veuillez indiquer le chemin vers le dossier d'installation de Rocket League.\nPar exemple le chemin par défaut (si vous l'avez installé depuis Epic Games) est: 'C:\\Program Files\\Epic Games\\rocketleague'\n\nChemin = ",
     "backup_original_maps1": "Backup des fichiers originaux dans le dossier 'original_maps' en cours...",
     "backup_original_maps2": "NE PAS EFFACER CES FICHIERS",
@@ -16,7 +17,8 @@
   },
   "en_US": {
     "set_language": "Please select your language : ",
-    "language_set": "Language modified to English (en_US)",
+    "language_set1": "Language modified to English (en_US)",
+    "language_set2": "Please press any key to return to the main menu ...",
     "get_map": "Please indicate the file path of your Rocket League installation.\nDefault path (if installed with Epic Games) is: 'C:\\Program Files\\Epic Games\\rocketleague'\n\nPath = ",
     "backup_original_maps1": "Backup of the original files to the 'original_maps' directory in progress...",
     "backup_original_maps2": "DO NOT DELETE THOSE FILES",
