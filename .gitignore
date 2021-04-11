@@ -1,4 +1,3 @@
-installer_maps_workshop_epic_games_en_US.py
 .backup
 modified_maps
 original_maps
@@ -11,3 +10,5 @@ pyvenv.cfg
 .git
 __pycache__
 Rocket_League_WorkMaps.zip
+Rocket_League_WorkMaps_Installer
+Rocket_League_WorkMaps_Installer.zip
