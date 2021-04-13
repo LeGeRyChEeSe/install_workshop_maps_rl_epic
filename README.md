@@ -5,7 +5,7 @@
 <br/>Python v3.8.6 min is required</p>
 <h2>Installation</h2> 
 <ol>
-	<li>Go to "Releases" and Download the latest package named "Rocket_League_WorkMaps.zip"</li>
+	<li>Go to "Releases" and Download the latest package named "Rocket_League_WorkMaps_Installer.zip"</li>
 	<li>Unzip the file and run the "INSTALL(only 1rst time).bat" file to install all necessary packages</li>
 	<li>Run "install_workshop_maps.py" and follow instructions</li>
 	<li>Enjoy!</li>
